@@ -1,0 +1,21 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "As the name suggests, this simply a url shortener. It's just for fun and practice just so I can test out my Express JS skills.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Makesi Morrison",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "helmet": "^3.21.2",
+    "mongoose": "^5.7.13",
+    "morgan": "^1.9.1",
+    "shortid": "^2.2.15"
+  }
+}
