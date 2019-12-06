@@ -1,9 +1,11 @@
+// Required Modules
 const express = require('express')
 const urlController = require('../controllers/urlsController')
 
 // Vars/Functions
 const router = express.Router()
 
+// Routes
 router
   .route('/')
   .get(urlController.getAll)

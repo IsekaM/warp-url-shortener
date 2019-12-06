@@ -72,7 +72,7 @@ urlController.post = async (req, res, next) => {
 
 		res.status(200).json({
 			success: true,
-			message: 'Resource found sucessfully',
+			message: 'Resource created sucessfully',
 			data: url
     })
     
