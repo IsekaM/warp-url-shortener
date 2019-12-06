@@ -7,12 +7,13 @@ const router = express.Router()
 
 // Routes
 router
-  .route('/')
-  .get(urlController.getAll)
-  .post(urlController.post)
+	.route('/')
+	.get(urlController.getAll)
+	.post(urlController.post)
 
 router
-  .route('/:id')
-  .get(urlController.getSingle)
+	.route('/:id')
+	.get(urlController.getSingle)
+	.delete(urlController.delete)
 
 module.exports = router

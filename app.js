@@ -29,7 +29,6 @@ app.use(express.json())
 // Mounting Routes
 app.use('/', indexRoutes)
 app.use('/api/v1/url/', urlRoutes)
-app.get('/', (req, res) => res.send('<h1>Hello World</h1>'))
 
 // Error Handler Middleware
 app.use(errorHandler)

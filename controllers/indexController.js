@@ -8,16 +8,14 @@ const { log } = console
 // Controller
 const indexController = {}
 
-indexController.index = async (req, res, next) => {
-	try {
-		const code = await Url.findById(req.params.id)
+indexController.index = asyncHandler(async (req, res, next) => {
+	const code = await Url.findById(req.params.id)
 
-		if (!code) return res.redirect('/')
-
-		return res.redirect(code.longUrl)
-	} catch (error) {
-		log(error)
+	if (!code) {
+		return res.redirect('/')
 	}
-}
+
+	return res.redirect(code.url)
+})
 
 module.exports = indexController
