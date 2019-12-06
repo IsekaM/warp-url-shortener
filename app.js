@@ -1,12 +1,12 @@
 // Required Modules
 require('dotenv').config()
 
-const asyncHandler = require('express-async-handler')
 const cors = require('cors')
 const express = require('express')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const connectDB = require('./utils/connectDB')
+const errorHandler = require('./middlewares/errorHandler')
 const indexRoutes = require('./routes/indexRoutes')
 const urlRoutes = require('./routes/urlRoutes')
 
@@ -30,6 +30,9 @@ app.use(express.json())
 app.use('/', indexRoutes)
 app.use('/api/v1/url/', urlRoutes)
 app.get('/', (req, res) => res.send('<h1>Hello World</h1>'))
+
+// Error Handler Middleware
+app.use(errorHandler)
 
 // Exposing App to the World
 app.listen(PORT, () => log(`App started on port: ${PORT}`))
