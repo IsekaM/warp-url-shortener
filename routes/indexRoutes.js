@@ -6,6 +6,6 @@ const indexController = require('../controllers/indexController')
 const router = express.Router()
 
 // Routes
-router.route('/:id').get(indexController.index)
+router.route('/').get(indexController.goToShortId)
 
 module.exports = router

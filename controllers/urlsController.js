@@ -3,10 +3,7 @@ const asyncHandler = require('express-async-handler')
 const validUrl = require('valid-url')
 const ErrorResponse = require('../utils/errorResponse')
 const Url = require('../models/Url')
-const { failedResponse, successResponse } = require('../utils/response')
-
-// Vars/Functions
-const { log } = console
+const { successResponse } = require('../utils/response')
 
 // Controller
 const urlController = {}
@@ -36,7 +33,7 @@ urlController.post = asyncHandler(async (req, res, next) => {
 	const existingUrl = await Url.findOne({ url })
 
 	if (existingUrl) {
-		return successResponse(res, 200, 'Url already found in database', url)
+		return successResponse(res, 200, 'Url already found in database', existingUrl)
 	}
 
 	const newUrl = await Url.create(req.body)

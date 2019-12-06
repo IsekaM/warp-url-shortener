@@ -8,7 +8,7 @@ const { log } = console
 // Controller
 const indexController = {}
 
-indexController.index = asyncHandler(async (req, res, next) => {
+indexController.goToShortId = asyncHandler(async (req, res, next) => {
 	const code = await Url.findById(req.params.id)
 
 	if (!code) {
