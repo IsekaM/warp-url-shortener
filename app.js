@@ -7,6 +7,7 @@ const express = require('express')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const connectDB = require('./utils/connectDB')
+const urlRoutes = require('./routes/urlRoutes')
 
 // App Variables
 const app = express()
@@ -25,7 +26,7 @@ app.use(morgan('short'))
 app.use(express.json())
 
 // Mounting Routes
-app.use('/api/v1/url/', )
+app.use('/api/v1/url/', urlRoutes)
 app.get('/', (req, res) => res.send('<h1>Hello World</h1>'))
 
 // Exposing App to the World
