@@ -21,16 +21,16 @@ const PORT = process.env.PORT || 3000
 connectDB()
 
 // Middlewares
-// app.use(cors())
-// app.use(helmet())
+app.use(cors())
+app.use(helmet())
 app.use(morgan('short'))
 app.use(express.json())
 app.use(express.static('./static/views'))
 app.use('/public', express.static('./static/public'))
 
 // Mounting Routes
-app.use('/', indexRoutes)
 app.use('/api/v1/url/', urlRoutes)
+app.use(indexRoutes)
 
 // Error Handler Middleware
 app.use(errorHandler)

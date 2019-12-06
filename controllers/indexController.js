@@ -2,9 +2,6 @@
 const asyncHandler = require('express-async-handler')
 const Url = require('../models/Url')
 
-// Vars/Functions
-const { log } = console
-
 // Controller
 const indexController = {}
 
@@ -17,5 +14,7 @@ indexController.goToShortId = asyncHandler(async (req, res, next) => {
 
 	return res.redirect(code.url)
 })
+
+indexController.notFound = (req, res, next) => {}
 
 module.exports = indexController

@@ -3,6 +3,10 @@ const formInput = document.querySelector('.url-form__input')
 const rootUrl = location.origin
 const { log } = console
 
+function makeUrlString(id) {
+	return `${rootUrl}/${id}`
+}
+
 async function fetchUrl(url) {
 	try {
 		const response = await fetch(`${rootUrl}/api/v1/url`, {
@@ -12,27 +16,26 @@ async function fetchUrl(url) {
 		})
 
 		if (!response.ok) {
-			return log('Error fetching url')
+			const message = response.status === 400 ? 'Invalid url sent' : 'Something went wrong'
+			return message
 		}
 
 		const json = await response.json()
+		const id = json['data']['_id']
 
-		return json.data
+		return makeUrlString(id)
 	} catch (error) {
 		log(error)
 	}
 }
 
 async function showShortUrl(e) {
-	e.preventDefault()
-
-	const target = e.target
 	const url = formInput.value
+	e.preventDefault()
 
 	try {
 		const shorturlId = await fetchUrl(url)
-		formInput.value = `${rootUrl}/${shorturlId['_id']}`
-		log(shorturlId)
+		formInput.value = shorturlId
 	} catch (error) {
 		log(error)
 	}

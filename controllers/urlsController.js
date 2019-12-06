@@ -5,6 +5,8 @@ const ErrorResponse = require('../utils/errorResponse')
 const Url = require('../models/Url')
 const { successResponse } = require('../utils/response')
 
+const { log } = console
+
 // Controller
 const urlController = {}
 
@@ -25,9 +27,15 @@ urlController.getSingle = asyncHandler(async (req, res, next) => {
 
 urlController.post = asyncHandler(async (req, res, next) => {
 	const { url } = req.body
+	const rootUrl = req.get('host')
+	const pattern = new RegExp(`(https?)?${rootUrl}\/.*`)
+
+	if (url.match(pattern)) {
+		return next(new ErrorResponse('Invalid url sent', 400))
+	}
 
 	if (!validUrl.isUri(url)) {
-		next(new ErrorResponse('Invalid or empty url sent', 400))
+		return next(new ErrorResponse('Invalid or empty url sent', 400))
 	}
 
 	const existingUrl = await Url.findOne({ url })
@@ -47,7 +55,7 @@ urlController.delete = asyncHandler(async (req, res, next) => {
 		return next(new ErrorResponse('Resource not found in database', 404))
 	}
 
-	successResponse(res, 204, 'Resource deleted successfully', url)
+	successResponse(res, 204, 'Resource deleted successfully')
 })
 
 module.exports = urlController
