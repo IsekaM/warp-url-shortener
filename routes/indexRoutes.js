@@ -7,5 +7,6 @@ const router = express.Router()
 
 // Routes
 router.route('/:id').get(indexController.goToShortId)
+router.route('*').get(indexController.loadPages)
 
 module.exports = router

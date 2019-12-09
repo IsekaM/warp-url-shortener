@@ -16,7 +16,7 @@ async function fetchUrl(url) {
 		})
 
 		if (!response.ok) {
-			const message = response.status === 400 ? 'Invalid url sent' : 'Something went wrong'
+			const message = response.status === 400 ? 'Invalid url entered' : 'Something went wrong'
 			return message
 		}
 

@@ -1,0 +1,10 @@
+extends ./layouts/app
+block append content
+  header.header
+    div.header__heading 
+      h1 Shorten Your URLs at Warp Speed
+      p simplify your links, track and manage them
+    form.url-form
+      div
+        input.url-form__input(type="text", placeholder="Paste url you want to shorten")
+        button.url-form__btn(type="submit") Shorten Url
